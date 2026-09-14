@@ -357,8 +357,7 @@ To renew the Network Controller node certificate, perform the following steps on
    
    ```powershell
    $targetCertPrivKey = $Cert.PrivateKey
-   $privKeyCertFile = Get-Item -path
-   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
+   $privKeyCertFile = Get-Item -path "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
    $privKeyAcl = Get-Acl $privKeyCertFile
    $permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
    $accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
